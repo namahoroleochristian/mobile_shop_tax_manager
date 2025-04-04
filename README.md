@@ -1,16 +1,10 @@
-# educate
+# TSTM
 
-A new Flutter project.
+A new FinTech project.
 
-## Getting Started
+I want to refine tax-payment at a way it would just end at Owner selling the product 
+the rest of the process would be done by just Automation 
+it's just starting I'm still learning about tax payment and God Bless you
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+!! Don't steal my project **but** **you can contribute**
