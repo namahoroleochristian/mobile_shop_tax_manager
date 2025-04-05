@@ -93,7 +93,7 @@
 //                   left: 0,
 //                   right: 0,
 //                   child: ClipRRect(
-                    
+
 //                     borderRadius: BorderRadius.all(Radius.circular(40.0)),
 //                     child: BottomAppBar(
 //                       color: const Color.fromARGB(255, 1, 22, 53),
@@ -243,16 +243,22 @@ class DashboardScreen extends StatelessWidget {
                       labelColor: Colors.white,
                       unselectedLabelColor: Colors.black,
                       indicator: BoxDecoration(
-                        
                         color: Colors.teal,
                         borderRadius: BorderRadius.circular(5),
                       ),
                       tabs: [
-
-                        Container(child: Tab(text: "Daily"), width: 100,),
-                        Container(child: Tab(text: "weekly"), width: 100,),
-                        Container(child: Tab(text: "monthly"), width: 100,),
-                        
+                        Container(
+                          child: Tab(text: "Daily"),
+                          width: 100,
+                        ),
+                        Container(
+                          child: Tab(text: "weekly"),
+                          width: 100,
+                        ),
+                        Container(
+                          child: Tab(text: "monthly"),
+                          width: 100,
+                        ),
                       ],
                     ),
                   ),
@@ -260,15 +266,20 @@ class DashboardScreen extends StatelessWidget {
               ),
             ),
 
-            SizedBox(height: 10,width: 200,),
+            SizedBox(
+              height: 10,
+              width: 200,
+            ),
 
             // Transactions List
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: Column(
                 children: [
-                  buildTransactionTile(Icons.shopping_cart, "Purchases", "140,000", "Monthly"),
-                  buildTransactionTile(Icons.receipt, "Taxes", "20,000", "Pantry"),
+                  buildTransactionTile(
+                      Icons.shopping_cart, "Purchases", "140,000", "Monthly"),
+                  buildTransactionTile(
+                      Icons.receipt, "Taxes", "20,000", "Pantry"),
                   buildTransactionTile(Icons.money, "Sales", "30,000", "Rent"),
                 ],
               ),
@@ -288,10 +299,17 @@ class DashboardScreen extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              IconButton(icon: Icon(Icons.home, color: Colors.teal), onPressed: () {}),
-              IconButton(icon: Icon(Icons.pie_chart, color: Colors.grey), onPressed: () {}),
-              IconButton(icon: Icon(Icons.swap_horiz, color: Colors.grey), onPressed: () {}),
-              IconButton(icon: Icon(Icons.settings, color: Colors.grey), onPressed: () {}),
+              IconButton(
+                  icon: Icon(Icons.home, color: Colors.teal), onPressed: () {}),
+              IconButton(
+                  icon: Icon(Icons.pie_chart, color: Colors.grey),
+                  onPressed: () {}),
+              IconButton(
+                  icon: Icon(Icons.swap_horiz, color: Colors.grey),
+                  onPressed: () {}),
+              IconButton(
+                  icon: Icon(Icons.settings, color: Colors.grey),
+                  onPressed: () {}),
             ],
           ),
         ),
@@ -304,8 +322,11 @@ class DashboardScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(title, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
-        Text(value, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.teal)),
+        Text(title,
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
+        Text(value,
+            style: TextStyle(
+                fontSize: 18, fontWeight: FontWeight.bold, color: Colors.teal)),
       ],
     );
   }
@@ -322,19 +343,28 @@ class DashboardScreen extends StatelessWidget {
         children: [
           Icon(icon, size: 40, color: Colors.teal),
           SizedBox(height: 10),
-          Text(title, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
-          Text(value, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.teal)),
+          Text(title,
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
+          Text(value,
+              style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.teal)),
         ],
       ),
     );
   }
 
-  Widget buildTransactionTile(IconData icon, String title, String amount, String category) {
+  Widget buildTransactionTile(
+      IconData icon, String title, String amount, String category) {
     return ListTile(
       leading: Icon(icon, size: 30, color: Colors.teal),
-      title: Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+      title: Text(title,
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
       subtitle: Text(category, style: TextStyle(color: Colors.grey)),
-      trailing: Text(amount, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.teal)),
+      trailing: Text(amount,
+          style: TextStyle(
+              fontSize: 16, fontWeight: FontWeight.bold, color: Colors.teal)),
     );
   }
 }
