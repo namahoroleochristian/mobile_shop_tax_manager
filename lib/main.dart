@@ -138,7 +138,11 @@
 //   }
 // }
 import 'package:educate/components/HomePage.dart';
+import 'package:educate/components/ActionPromptStarter.dart';
 import 'package:educate/components/Starter.dart';
+import 'package:educate/components/authentication/Login.dart';
+import 'package:educate/components/authentication/forgotPassword.dart';
+import 'package:educate/components/authentication/signUp.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -149,6 +153,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: '/',
+      routes: {
+        '/login': (context) => Login(),
+        '/signUp': (context) => Signup(),
+        '/forgotPassword': (context) => Forgotpassword(),
+      },
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
     );
@@ -164,7 +174,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 5), () {
+    Future.delayed(Duration(seconds: 3), () {
       Navigator.pushReplacement(
           // context, MaterialPageRoute(builder: (context) => DashboardScreen()));
           context,
@@ -175,9 +185,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   (context, animation, seconaryAnimation, child) {
                 return FadeTransition(opacity: animation, child: child);
               },
-                transitionDuration: Duration(milliseconds: 500)
-              )
-              );
+              transitionDuration: Duration(milliseconds: 500)));
     });
   }
 
@@ -192,7 +200,7 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(0, 208, 158, 1),
-      body: Homepage(),
+      body: Actionpromptstarter(),
     );
   }
 }

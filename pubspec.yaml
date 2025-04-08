@@ -64,6 +64,7 @@ flutter:
     - lib/assets/intoki.svg
     - D:/DEV/Projects/Flt/educate/lib/assets/rra1.png
     - D:/DEV/Projects/Flt/educate/lib/assets/Logo.png
+    - D:/DEV/Projects/Flt/educate/lib/assets/GreenLogo.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
