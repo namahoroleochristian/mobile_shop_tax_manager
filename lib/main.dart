@@ -138,6 +138,7 @@
 //   }
 // }
 import 'package:educate/components/HomePage.dart';
+import 'package:educate/components/Starter.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -149,8 +150,40 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: DashboardScreen(),
+      home: SplashScreen(),
     );
+  }
+}
+
+class SplashScreen extends StatefulWidget {
+  @override
+  _SplashScreenState createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 5), () {
+      Navigator.pushReplacement(
+          // context, MaterialPageRoute(builder: (context) => DashboardScreen()));
+          context,
+          PageRouteBuilder(
+              pageBuilder: (context, animation, seconaryAnimation) =>
+                  DashboardScreen(),
+              transitionsBuilder:
+                  (context, animation, seconaryAnimation, child) {
+                return FadeTransition(opacity: animation, child: child);
+              },
+                transitionDuration: Duration(milliseconds: 500)
+              )
+              );
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Starter();
   }
 }
 
@@ -158,35 +191,8 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.teal.shade400,
-      body:Homepage(),
-      // Bottom Navigation Bar
-      bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(30),
-          topRight: Radius.circular(30),
-        ),
-        child: BottomAppBar(
-          color: Colors.white,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              IconButton(
-                  icon: Icon(Icons.home, color: Colors.teal), onPressed: () {}),
-              IconButton(
-                  icon: Icon(Icons.inventory, color: Colors.grey),
-                  onPressed: () {}),
-              IconButton(
-                  icon: Image.asset(
-                      'D:/DEV/Projects/Flt/educate/lib/assets/rra1.png'),
-                  onPressed: () {}),
-              IconButton(
-                  icon: Icon(Icons.settings, color: Colors.grey),
-                  onPressed: () {}),
-            ],
-          ),
-        ),
-      ),
+      backgroundColor: const Color.fromRGBO(0, 208, 158, 1),
+      body: Homepage(),
     );
   }
 }
