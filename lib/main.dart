@@ -143,10 +143,18 @@ import 'package:educate/components/Starter.dart';
 import 'package:educate/components/authentication/Login.dart';
 import 'package:educate/components/authentication/forgotPassword.dart';
 import 'package:educate/components/authentication/signUp.dart';
+import 'package:educate/components/providers/SignUpProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    MultiProvider(providers: [
+      ChangeNotifierProvider(create: (_) => SignupProvider())
+    ],
+    child: MyApp(),
+    )
+  );
 }
 
 class MyApp extends StatelessWidget {
