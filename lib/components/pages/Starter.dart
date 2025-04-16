@@ -7,7 +7,7 @@ class Starter extends StatelessWidget {
       body: Center(
         
           child: Container(
-              height: 800 - 87,
+              height: MediaQuery.of(context).size.height + 200,
               decoration: BoxDecoration(
                 color: const Color.fromRGBO(0, 208, 158, 1),
               ),

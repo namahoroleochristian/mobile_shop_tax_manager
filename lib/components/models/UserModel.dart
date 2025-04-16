@@ -25,3 +25,4 @@ class SignUpData {
         'password': password
       };
 }
+
