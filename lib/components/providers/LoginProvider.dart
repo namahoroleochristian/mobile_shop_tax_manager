@@ -33,20 +33,20 @@ class LoginProvider extends ChangeNotifier {
           headers: {"Content-Type": "application/json"},
           body: jsonEncode(data.toJson()));
       if (response.statusCode == 200) {
-        // final Map<String, dynamic> responseData = jsonDecode(response.body);
+        final Map<String, dynamic> responseData = jsonDecode(response.body);
 
-        // if (responseData['success'] = true) {
-        //   final String token = responseData['token'];
+        if (responseData['success'] = true) {
+          final String? token = responseData['token'];
 
-        //   if (token != null && token.isNotEmpty) {
-        //     String _authToken = token;
-        //     await storage.write(key: 'authtoken', value: _authToken);
-        //     _successMessage = "User Login successs ";
-        //   } else {
-        //     _error = "login success but no recieved token";
-        //   }
-        // }
+          if (token != null && token.isNotEmpty) {
+            String authToken = token;
+            await storage.write(key: 'authToken', value: authToken);
             _successMessage = "User Login successs ";
+          } else {
+            _error = "login success but no recieved token";
+          }
+        }
+            // _successMessage = "User Login successs ";
       } else {
         _error = 'login failed for ${response.statusCode}';
       }

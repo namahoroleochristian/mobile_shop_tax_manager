@@ -1,10 +1,11 @@
 import 'dart:convert';
-
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:educate/components/models/itemRegistration.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class Itemregstrationprovider extends ChangeNotifier {
+  final storage = FlutterSecureStorage();
   bool _isLoading = false;
   String? _error = '';
   String? _successMessage = '';
@@ -20,6 +21,13 @@ class Itemregstrationprovider extends ChangeNotifier {
     notifyListeners();
     try {
       String url;
+      String? token = await storage.read(key: 'authToken');
+      //IF CODITION
+      if (token != null) {
+        _error = 'not allowed User not logged In';
+      }
+      else{
+
       url = 'http://localhost:2000/tax/item/register/67fadaa0057d7851bb3f2c83';
       final response = await http.post(Uri.parse(url),
           headers: {'Content-Type': 'application/json'},
@@ -30,6 +38,7 @@ class Itemregstrationprovider extends ChangeNotifier {
       } else {
         _error = "item creation failed with error message ${response.body}";
       }
+  }
     } catch (errorMessage) {
       _error = errorMessage.toString();
     }
