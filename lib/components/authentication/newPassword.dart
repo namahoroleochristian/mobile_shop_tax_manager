@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class Forgotpassword extends StatefulWidget {
+class Newpassword extends StatefulWidget {
   @override
-  _ForgotpasswordState createState() => _ForgotpasswordState();
+  _NewpasswordState createState() => _NewpasswordState();
 }
 
-class _ForgotpasswordState extends State<Forgotpassword> {
+class _NewpasswordState extends State<Newpassword> {
   final _formKey = GlobalKey<FormState>();
   @override
   build(BuildContext context) {
@@ -15,7 +15,7 @@ class _ForgotpasswordState extends State<Forgotpassword> {
         toolbarHeight: MediaQuery.of(context).size.height / 6,
         backgroundColor: const Color.fromRGBO(0, 208, 158, 1),
         title: Center(
-          child: Text(" Forgot Password      "),
+          child: Text(" New Password      "),
         ),
         titleTextStyle: TextStyle(
           color: Colors.black,
@@ -39,23 +39,7 @@ class _ForgotpasswordState extends State<Forgotpassword> {
                 SizedBox(
                   height: 100,
                 ),
-                SizedBox(
-                  height: 40,
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  child: Text(
-                    "Reset Password ?",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  child: Text(
-                    "Forgot Your Password,Don't worry It all happens to Us !",
-                    style:
-                        TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
-                  ),
-                ),
+                
                 SizedBox(
                   height: 30,
                 ),
@@ -63,7 +47,7 @@ class _ForgotpasswordState extends State<Forgotpassword> {
                   height: 20,
                   width: MediaQuery.of(context).size.width * 0.9,
                   child: Text(
-                    "Email",
+                    "New Password",
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -77,7 +61,7 @@ class _ForgotpasswordState extends State<Forgotpassword> {
                       onChanged: (context) {},
                       decoration: InputDecoration(
                         floatingLabelBehavior: FloatingLabelBehavior.never,
-                        label: Text("Enter Your Email"),
+                        label: Text("Enter Your New Password"),
                         prefixIcon: Icon(Icons.email_outlined),
                         enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -101,7 +85,7 @@ class _ForgotpasswordState extends State<Forgotpassword> {
                       },
                       backgroundColor: const Color.fromRGBO(0, 208, 158, 1),
                       child: Text(
-                        "Next Step",
+                        "Change Password",
                         style: TextStyle(fontSize: 20, color: Colors.white),
                       ),
                     ))

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class Forgotpassword extends StatefulWidget {
+class securityPin extends StatefulWidget {
   @override
-  _ForgotpasswordState createState() => _ForgotpasswordState();
+  _securityPinState createState() => _securityPinState();
 }
 
-class _ForgotpasswordState extends State<Forgotpassword> {
+class _securityPinState extends State<securityPin> {
   final _formKey = GlobalKey<FormState>();
   @override
   build(BuildContext context) {
@@ -15,7 +15,7 @@ class _ForgotpasswordState extends State<Forgotpassword> {
         toolbarHeight: MediaQuery.of(context).size.height / 6,
         backgroundColor: const Color.fromRGBO(0, 208, 158, 1),
         title: Center(
-          child: Text(" Forgot Password      "),
+          child: Text(" Security Pin      "),
         ),
         titleTextStyle: TextStyle(
           color: Colors.black,
@@ -41,31 +41,14 @@ class _ForgotpasswordState extends State<Forgotpassword> {
                 ),
                 SizedBox(
                   height: 40,
-                  width: MediaQuery.of(context).size.width * 0.9,
+                  width: MediaQuery.of(context).size.width * 0.5,
                   child: Text(
-                    "Reset Password ?",
+                    "Enter security PIN",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                 ),
                 SizedBox(
-                  height: 20,
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  child: Text(
-                    "Forgot Your Password,Don't worry It all happens to Us !",
-                    style:
-                        TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
-                  ),
-                ),
-                SizedBox(
                   height: 30,
-                ),
-                SizedBox(
-                  height: 20,
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  child: Text(
-                    "Email",
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-                  ),
                 ),
                 SizedBox(
                   height: 10,
@@ -77,8 +60,8 @@ class _ForgotpasswordState extends State<Forgotpassword> {
                       onChanged: (context) {},
                       decoration: InputDecoration(
                         floatingLabelBehavior: FloatingLabelBehavior.never,
-                        label: Text("Enter Your Email"),
-                        prefixIcon: Icon(Icons.email_outlined),
+                        label: Text("Enter Your security Pin"),
+                        prefixIcon: Icon(Icons.pin),
                         enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                                 color: const Color.fromRGBO(0, 208, 158, 1),
@@ -97,14 +80,33 @@ class _ForgotpasswordState extends State<Forgotpassword> {
                     child: FloatingActionButton(
                       onPressed: () {
                         Navigator.pushNamed(
-                            (context), '/forgotPassword/nextStep');
+                            (context), '/forgotPassword/final');
                       },
                       backgroundColor: const Color.fromRGBO(0, 208, 158, 1),
                       child: Text(
-                        "Next Step",
+                        "Accept",
                         style: TextStyle(fontSize: 20, color: Colors.white),
                       ),
-                    ))
+                    )),
+                SizedBox(
+                  height: 30,
+                ),
+                SizedBox(
+                    height: 70,
+                    width: MediaQuery.of(context).size.width * 4 / 6,
+                    child: FloatingActionButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                              (context), '/forgotPassword/final');
+                        },
+                        backgroundColor: Colors.white,
+                        child: Text(
+                          "Send Pin again",
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: const Color.fromRGBO(0, 208, 158, 1),
+                          ),
+                        )))
               ],
             ),
           ),

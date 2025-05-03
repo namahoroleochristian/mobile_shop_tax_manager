@@ -1,3 +1,5 @@
+import 'package:educate/components/authentication/newPassword.dart';
+import 'package:educate/components/authentication/securityPin.dart';
 import 'package:educate/components/pages/HomePage.dart';
 import 'package:educate/components/pages/ActionPromptStarter.dart';
 import 'package:educate/components/pages/Inventory.dart';
@@ -33,6 +35,8 @@ class MyApp extends StatelessWidget {
         '/login': (context) => Login(),
         '/signUp': (context) => Signup(),
         '/forgotPassword': (context) => Forgotpassword(),
+        '/forgotPassword/nextStep': (context) => securityPin(),
+        '/forgotPassword/final': (context) => Newpassword(),
         '/homepage' : (context) => Homepage(),
         '/taxes' : (context) => Taxes(),
         '/inventory' : (context) => Inventory(),
