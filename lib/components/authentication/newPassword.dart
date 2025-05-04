@@ -76,12 +76,41 @@ class _NewpasswordState extends State<Newpassword> {
                   height: 30,
                 ),
                 SizedBox(
+                  height: 20,
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  child: Text(
+                    "Confirm Password",
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                SizedBox(
+                    height: 70,
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    child: TextFormField(
+                      onChanged: (context) {},
+                      decoration: InputDecoration(
+                        floatingLabelBehavior: FloatingLabelBehavior.never,
+                        label: Text("Confirm Your New Password"),
+                        prefixIcon: Icon(Icons.email_outlined),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: const Color.fromRGBO(0, 208, 158, 1),
+                                width: 0.1)),
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: const Color.fromRGBO(0, 208, 158, 1))),
+                      ),
+                    )),
+                SizedBox(
                     height: 70,
                     width: MediaQuery.of(context).size.width * 4 / 6,
                     child: FloatingActionButton(
                       onPressed: () {
                         Navigator.pushNamed(
-                            (context), '/forgotPassword/nextStep');
+                            (context), '/login');
                       },
                       backgroundColor: const Color.fromRGBO(0, 208, 158, 1),
                       child: Text(
