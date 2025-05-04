@@ -22,7 +22,7 @@ class Itemregstrationprovider extends ChangeNotifier {
     try {
       String url;
       String? token = await storage.read(key: 'authToken');
-      //IF CODITION
+      
       if (token != null) {
         _error = 'not allowed User not logged In';
       }
