@@ -13,7 +13,11 @@ class LoginProvider extends ChangeNotifier {
   String? get error => _error;
   bool get isLoading => _isLoading;
   String? get successMessage => _successMessage;
-  
+
+  void setError(String? message) {
+    _error = message;
+    notifyListeners();
+  }
 
   Future<void> login(LoginData data) async {
     _error = null;
@@ -22,6 +26,9 @@ class LoginProvider extends ChangeNotifier {
     notifyListeners();
     try {
       String url;
+      if (_error != null) {
+        _error = "all field sre required";
+      }
       if (data.role == 'customer') {
         url = "http://localhost:2000/tax/customer/login";
       } else if (data.role == 'vendor') {
@@ -46,7 +53,7 @@ class LoginProvider extends ChangeNotifier {
             _error = "login success but no recieved token";
           }
         }
-            // _successMessage = "User Login successs ";
+        // _successMessage = "User Login successs ";
       } else {
         _error = 'login failed for ${response.statusCode}';
       }

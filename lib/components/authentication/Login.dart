@@ -14,9 +14,40 @@ class _LoginState extends State<Login> {
   String password = '';
   String role = 'customer';
 
+  void _submitLogin(LoginProvider provider) async {
+    if (_formKey.currentState!.validate()) {
+      provider.setError(null);
+      final loginData = LoginData(
+        role: role,
+        email: email,
+        password: password,
+      );
+      await provider.login(loginData);
+
+      if (provider.successMessage != null) {
+        if (role == 'vendor') {
+          Navigator.pushNamed((context), '/homepage');
+        } else if (role == 'customer') {
+          Navigator.pushNamed((context), '/customer_home');
+        }
+      } else if (provider.error != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("${provider.error}",
+                style: TextStyle(color: Colors.white)),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    } else {
+      provider.setError("All fields are required");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<LoginProvider>(context);
+    bool isFormValid = _formKey.currentState?.validate() ?? false;
 
     return Scaffold(
       backgroundColor: const Color.fromRGBO(0, 208, 158, 1),
@@ -24,7 +55,7 @@ class _LoginState extends State<Login> {
         toolbarHeight: MediaQuery.of(context).size.height / 6,
         backgroundColor: const Color.fromRGBO(0, 208, 158, 1),
         title: Center(
-          child: Text(" Login      "),
+          child: Text(" Login     "),
         ),
         titleTextStyle: TextStyle(
           color: Colors.black,
@@ -80,6 +111,12 @@ class _LoginState extends State<Login> {
                     value: role,
                     onChanged: (val) => setState(() => role = val!),
                     items: roles,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please select a role';
+                      }
+                      return null;
+                    },
                   ),
                 ),
                 SizedBox(height: 20),
@@ -92,6 +129,13 @@ class _LoginState extends State<Login> {
                 SizedBox(
                     width: MediaQuery.of(context).size.width * 5 / 6,
                     child: TextFormField(
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your email';
+                        }
+                        // You can add more sophisticated email validation here if needed
+                        return null;
+                      },
                       decoration: InputDecoration(
                         floatingLabelBehavior: FloatingLabelBehavior.never,
                         prefixIcon: Icon(Icons.email),
@@ -106,8 +150,7 @@ class _LoginState extends State<Login> {
                                 width: 0.1)),
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                                color:
-                                    const Color.fromRGBO(0, 208, 158, 1))),
+                                color: const Color.fromRGBO(0, 208, 158, 1))),
                       ),
                       onChanged: (val) => email = val,
                     )),
@@ -135,10 +178,15 @@ class _LoginState extends State<Login> {
                                 width: 0.1)),
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                                color:
-                                    const Color.fromRGBO(0, 208, 158, 1))),
+                                color: const Color.fromRGBO(0, 208, 158, 1))),
                       ),
                       onChanged: (val) => password = val,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your password';
+                        }
+                        return null;
+                      },
                     )),
                 SizedBox(height: 40),
                 if (provider.isLoading == true)
@@ -164,28 +212,8 @@ class _LoginState extends State<Login> {
                   width: MediaQuery.of(context).size.width * 3.5 / 6,
                   child: FloatingActionButton(
                     backgroundColor: const Color.fromRGBO(0, 208, 158, 1),
-                    onPressed: () async {
-                      if (_formKey.currentState!.validate()) {
-                        final loginData = LoginData(
-                          role: role,
-                          email: email,
-                          password: password,
-                        );
-                        await provider.login(loginData); // Wait for login to complete
-
-                        if (provider.successMessage != null) {
-                          if (role == 'vendor') {
-                            Navigator.pushNamed((context), '/homepage');
-                          } else if (role == 'customer') {
-                            Navigator.pushNamed((context), '/customer_home'); // Add customer home route
-                          }
-                        } else if (provider.error != null) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text("${provider.error}", style: TextStyle(color: Colors.white)), backgroundColor: Colors.red,),
-                          );
-                        }
-                      }
-                    },
+                    onPressed:
+                        isFormValid ? () => _submitLogin(provider) : null,
                     child: Text(
                       "Login",
                       style: TextStyle(
@@ -201,7 +229,7 @@ class _LoginState extends State<Login> {
                       Navigator.pushNamed(context, '/signUp');
                     },
                     child: Text(
-                      "Don't have an Account  SignUp ",
+                      "Don't have an Account   SignUp ",
                       style: TextStyle(color: Colors.black),
                     ))
               ],
