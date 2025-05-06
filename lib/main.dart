@@ -44,6 +44,7 @@ class MyApp extends StatelessWidget {
         '/setting' : (context) => Settings(),
       },
       debugShowCheckedModeBanner: false,
+      
       home: SplashScreen(),
     );
   }
@@ -61,7 +62,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(Duration(seconds: 3), () {
       Navigator.pushReplacement(
           // context, MaterialPageRoute(builder: (context) => DashboardScreen()));
-          context,
+          (context),
           PageRouteBuilder(
               pageBuilder: (context, animation, seconaryAnimation) =>
                   DashboardScreen(),
