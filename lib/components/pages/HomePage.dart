@@ -6,7 +6,7 @@ void main() => runApp(Homepage());
 
 class Homepage extends StatelessWidget {
   final String name;
-  Homepage({this.name = "Homepage"});
+  const Homepage({this.name = "Homepage"});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

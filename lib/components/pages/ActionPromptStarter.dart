@@ -15,7 +15,7 @@ class _ActionpromptstarterState extends State<Actionpromptstarter> {
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         Center(
           child: Image.asset(
-            "D:/DEV/Projects/Flt/educate/lib/assets/GreenLogo.png",
+            "D:/projects/mtms/lib/assets/GreenLogo.png",
             height: 100,
             width: 100,
           ),

@@ -55,7 +55,7 @@ class LoginProvider extends ChangeNotifier {
         }
         // _successMessage = "User Login successs ";
       } else {
-        _error = 'login failed for ${response.statusCode}';
+        _error = 'login failed for ` ${response.body}   ` ${response.statusCode}';
       }
     } catch (error) {
       _error = 'occured error $error';

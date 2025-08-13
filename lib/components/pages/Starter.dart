@@ -16,7 +16,7 @@ class Starter extends StatelessWidget {
                   children: [
                     Center(
                       child: Image.asset(
-                          "D:/DEV/Projects/Flt/educate/lib/assets/Logo.png"),
+                          "D:/projects/mtms/lib/assets/Logo.png"),
                     ),
                     Center(
                       child: Text("Enjoy Digital Tax",

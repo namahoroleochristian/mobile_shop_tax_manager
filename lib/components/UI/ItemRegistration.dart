@@ -298,14 +298,14 @@ class _itemregistrationState extends State<Itemregistration> {
                     SizedBox(
                       height: 5,
                     ),
-                    TextButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/login');
-                        },
-                        child: Text(
-                          "Already have an Account Login",
-                          style: TextStyle(color: Colors.black),
-                        ))
+                    // TextButton(
+                    //     onPressed: () {
+                    //       Navigator.pushNamed(context, '/login');
+                    //     },
+                    //     child: Text(
+                    //       "Already have an Account Login",
+                    //       style: TextStyle(color: Colors.black),
+                    //     ))
                   ],
                 )),
           ),
@@ -316,7 +316,7 @@ class _itemregistrationState extends State<Itemregistration> {
 List<DropdownMenuItem<String>> units = [
   DropdownMenuItem(
     value: 'single',
-    child: Text("single iTEM"),
+    child: Text("single item"),
   ),
-  DropdownMenuItem(value: 'pack', child: Text("Pack")),
+  DropdownMenuItem(value: 'pack', child: Text("Pack or dozen ")),
 ];
