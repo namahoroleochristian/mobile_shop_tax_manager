@@ -12,6 +12,7 @@ import 'package:educat/components/authentication/signUp.dart';
 import 'package:educat/components/pages/Taxes.dart';
 import 'package:educat/components/providers/LoginProvider.dart';
 import 'package:educat/components/providers/SignUpProvider.dart';
+import 'package:educat/components/providers/resetpasword/sendVerificationCodeProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +20,8 @@ void main() {
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider(create: (_) => SignupProvider()),
-      ChangeNotifierProvider(create: (_) => LoginProvider())
+      ChangeNotifierProvider(create: (_) => LoginProvider()),
+      ChangeNotifierProvider(create: (_) => SendVerificationCodeProvider()),
     ],
     child: MyApp(),
     )

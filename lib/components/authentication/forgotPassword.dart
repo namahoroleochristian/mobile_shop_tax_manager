@@ -1,14 +1,34 @@
+import 'package:educat/components/models/resetpassword/SendVerificationCode.dart';
+import 'package:educat/components/providers/resetpasword/sendVerificationCodeProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Forgotpassword extends StatefulWidget {
   @override
   _ForgotpasswordState createState() => _ForgotpasswordState();
 }
-
 class _ForgotpasswordState extends State<Forgotpassword> {
   final _formKey = GlobalKey<FormState>();
+
+  String email = '';
+  void _submitEmail(SendVerificationCodeProvider provider)async {
+    bool isFormValid = _formKey.currentState?.validate() ?? false;
+
+    if(_formKey.currentState!.validate()){
+      provider.setError(null);
+      final VerificationCodeData = SendVerificationCodeData(
+    email:email, );
+      await provider.SendVerificationCode(VerificationCodeData);
+    }
+    if(provider.successMessage != null){
+      Navigator.pushNamed(
+          (context), '/forgotPassword/nextStep');
+    }
+  }
   @override
   build(BuildContext context) {
+    final provider = Provider.of<SendVerificationCodeProvider>(context);
+
     return Scaffold(
       backgroundColor: const Color.fromRGBO(0, 208, 158, 1),
       appBar: AppBar(
@@ -74,7 +94,13 @@ class _ForgotpasswordState extends State<Forgotpassword> {
                     height: 70,
                     width: MediaQuery.of(context).size.width * 0.9,
                     child: TextFormField(
-                      onChanged: (context) {},
+                      validator: (value){
+                        if(value == null || value.isEmpty){
+                          return 'please enter your email';
+                        }
+                        return null;
+                      },
+                      onChanged: (val) => email = val,
                       decoration: InputDecoration(
                         floatingLabelBehavior: FloatingLabelBehavior.never,
                         label: Text("Enter Your Email"),
@@ -94,12 +120,11 @@ class _ForgotpasswordState extends State<Forgotpassword> {
                 SizedBox(
                     height: 70,
                     width: MediaQuery.of(context).size.width * 4 / 6,
-                    child: FloatingActionButton(
-                      onPressed: () {
-                        Navigator.pushNamed(
-                            (context), '/forgotPassword/nextStep');
-                      },
-                      backgroundColor: const Color.fromRGBO(0, 208, 158, 1),
+                    child: ElevatedButton(
+                      onPressed:  ()=>_submitEmail(provider)  ,
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(const Color.fromRGBO(0, 208, 158, 1))
+                      ),
                       child: Text(
                         "Next Step",
                         style: TextStyle(fontSize: 20, color: Colors.white),

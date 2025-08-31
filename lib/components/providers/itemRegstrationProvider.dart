@@ -29,9 +29,7 @@ class Itemregstrationprovider extends ChangeNotifier {
       else{
 
       url = 'http://localhost:2000/tax/item/register/67fadaa0057d7851bb3f2c83';
-      final response = await http.post(Uri.parse(url),
-          headers: {'Content-Type': 'application/json'},
-          body: jsonEncode(data.toJson()));
+      final response = await http.post(Uri.parse(url), headers: {'Content-Type': 'application/json'}, body: jsonEncode(data.toJson()));
 
       if (response.statusCode == 200) {
         _successMessage = "DATA SAVED SUCCESSFULLY";

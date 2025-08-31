@@ -58,11 +58,12 @@ class _NewpasswordState extends State<Newpassword> {
                     height: 70,
                     width: MediaQuery.of(context).size.width * 0.9,
                     child: TextFormField(
+                      obscureText: true,
                       onChanged: (context) {},
                       decoration: InputDecoration(
                         floatingLabelBehavior: FloatingLabelBehavior.never,
                         label: Text("Enter Your New Password"),
-                        prefixIcon: Icon(Icons.email_outlined),
+                        prefixIcon: Icon(Icons.key_outlined),
                         enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                                 color: const Color.fromRGBO(0, 208, 158, 1),
@@ -90,11 +91,12 @@ class _NewpasswordState extends State<Newpassword> {
                     height: 70,
                     width: MediaQuery.of(context).size.width * 0.9,
                     child: TextFormField(
+                      obscureText: true,
                       onChanged: (context) {},
                       decoration: InputDecoration(
                         floatingLabelBehavior: FloatingLabelBehavior.never,
                         label: Text("Confirm Your New Password"),
-                        prefixIcon: Icon(Icons.email_outlined),
+                        prefixIcon: Icon(Icons.key_outlined),
                         enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                                 color: const Color.fromRGBO(0, 208, 158, 1),

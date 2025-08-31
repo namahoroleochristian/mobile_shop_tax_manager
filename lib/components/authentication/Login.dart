@@ -30,7 +30,8 @@ class _LoginState extends State<Login> {
         } else if (role == 'customer') {
           Navigator.pushNamed((context), '/customer_home');
         }
-      } else if (provider.error != null) {
+      }
+      else if (provider.error != null) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text("${provider.error}",
