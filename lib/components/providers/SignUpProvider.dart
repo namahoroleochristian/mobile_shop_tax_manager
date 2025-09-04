@@ -22,9 +22,9 @@ class SignupProvider extends ChangeNotifier {
     try {
       String url;
       if (data.role == 'Vendor') {
-        url = "http://localhost:2000/tax/payer/register";
+        url = "http://192.168.0.100:2000/tax/payer/register";
       } else if (data.role == 'customer') {
-        url = "http://localhost:2000/tax/customer/register";
+        url = "http://192.168.0.100:2000/tax/customer/register";
       } else {
         throw Exception("invalid role");
       }

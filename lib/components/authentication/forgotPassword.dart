@@ -7,24 +7,26 @@ class Forgotpassword extends StatefulWidget {
   @override
   _ForgotpasswordState createState() => _ForgotpasswordState();
 }
+
 class _ForgotpasswordState extends State<Forgotpassword> {
   final _formKey = GlobalKey<FormState>();
 
   String email = '';
-  void _submitEmail(SendVerificationCodeProvider provider)async {
+  void _submitEmail(SendVerificationCodeProvider provider) async {
     bool isFormValid = _formKey.currentState?.validate() ?? false;
 
-    if(_formKey.currentState!.validate()){
+    if (_formKey.currentState!.validate()) {
       provider.setError(null);
       final VerificationCodeData = SendVerificationCodeData(
-    email:email, );
+        email: email,
+      );
       await provider.SendVerificationCode(VerificationCodeData);
     }
-    if(provider.successMessage != null){
-      Navigator.pushNamed(
-          (context), '/forgotPassword/nextStep');
+    if (provider.successMessage != null) {
+      Navigator.pushNamed((context), '/forgotPassword/nextStep');
     }
   }
+
   @override
   build(BuildContext context) {
     final provider = Provider.of<SendVerificationCodeProvider>(context);
@@ -94,8 +96,8 @@ class _ForgotpasswordState extends State<Forgotpassword> {
                     height: 70,
                     width: MediaQuery.of(context).size.width * 0.9,
                     child: TextFormField(
-                      validator: (value){
-                        if(value == null || value.isEmpty){
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
                           return 'please enter your email';
                         }
                         return null;
@@ -117,14 +119,24 @@ class _ForgotpasswordState extends State<Forgotpassword> {
                 SizedBox(
                   height: 30,
                 ),
+                if (provider.isLoading == true)
+                  CircularProgressIndicator(backgroundColor: Colors.blue),
+                if (provider.error != null)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10.0),
+                    child: Text(
+                      "${provider.error}",
+                      style: TextStyle(color: Colors.red),
+                    ),
+                  ),
                 SizedBox(
                     height: 70,
                     width: MediaQuery.of(context).size.width * 4 / 6,
                     child: ElevatedButton(
-                      onPressed:  ()=>_submitEmail(provider)  ,
+                      onPressed: () => _submitEmail(provider),
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(const Color.fromRGBO(0, 208, 158, 1))
-                      ),
+                          backgroundColor: MaterialStateProperty.all(
+                              const Color.fromRGBO(0, 208, 158, 1))),
                       child: Text(
                         "Next Step",
                         style: TextStyle(fontSize: 20, color: Colors.white),

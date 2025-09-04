@@ -12,20 +12,21 @@ import 'package:educat/components/authentication/signUp.dart';
 import 'package:educat/components/pages/Taxes.dart';
 import 'package:educat/components/providers/LoginProvider.dart';
 import 'package:educat/components/providers/SignUpProvider.dart';
+import 'package:educat/components/providers/resetpasword/VerifySecurityPin.dart';
 import 'package:educat/components/providers/resetpasword/sendVerificationCodeProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(
-    MultiProvider(providers: [
+  runApp(MultiProvider(
+    providers: [
       ChangeNotifierProvider(create: (_) => SignupProvider()),
       ChangeNotifierProvider(create: (_) => LoginProvider()),
       ChangeNotifierProvider(create: (_) => SendVerificationCodeProvider()),
+      ChangeNotifierProvider(create: (_) => VerifySecurityPinProvider()),
     ],
     child: MyApp(),
-    )
-  );
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -39,14 +40,13 @@ class MyApp extends StatelessWidget {
         '/forgotPassword': (context) => Forgotpassword(),
         '/forgotPassword/nextStep': (context) => securityPin(),
         '/forgotPassword/final': (context) => Newpassword(),
-        '/homepage' : (context) => Homepage(),
-        '/taxes' : (context) => Taxes(),
-        '/inventory' : (context) => Inventory(),
-        '/ItemRegister' : (context) => Inventoryitemregistration(),
-        '/setting' : (context) => Settings(),
+        '/homepage': (context) => Homepage(),
+        '/taxes': (context) => Taxes(),
+        '/inventory': (context) => Inventory(),
+        '/ItemRegister': (context) => Inventoryitemregistration(),
+        '/setting': (context) => Settings(),
       },
       debugShowCheckedModeBanner: false,
-      
       home: SplashScreen(),
     );
   }
