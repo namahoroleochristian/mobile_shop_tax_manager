@@ -20,7 +20,7 @@ class _ForgotpasswordState extends State<Forgotpassword> {
       final VerificationCodeData = SendVerificationCodeData(
         email: email,
       );
-      await provider.SendVerificationCode(VerificationCodeData);
+      await provider.sendVerificationCode(VerificationCodeData);
     }
     if (provider.successMessage != null) {
       Navigator.pushNamed((context), '/forgotPassword/nextStep');

@@ -30,9 +30,9 @@ class LoginProvider extends ChangeNotifier {
         _error = "all field sre required";
       }
       if (data.role == 'customer') {
-        url = "http://localhost:2000/tax/customer/login";
+        url = "http://192.168.0.104:2000/tax/customer/login";
       } else if (data.role == 'vendor') {
-        url = "http://localhost:2000/tax/payer/login";
+        url = "http://192.168.0.104:2000/tax/payer/login";
       } else {
         throw Exception("invalid role ");
       }
@@ -55,7 +55,8 @@ class LoginProvider extends ChangeNotifier {
         }
         // _successMessage = "User Login successs ";
       } else {
-        _error = 'login failed for ` ${response.body}   ` ${response.statusCode}';
+        _error =
+            'login failed for ` ${response.body}   ` ${response.statusCode}';
       }
     } catch (error) {
       _error = 'occured error $error';

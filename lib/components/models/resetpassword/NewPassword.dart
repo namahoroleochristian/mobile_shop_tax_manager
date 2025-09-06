@@ -1,17 +1,17 @@
 class NewPasswordData {
-  final String NewPassword;
-  final String ConfirmNewPassword;
-  NewPasswordData(
-      {
-  required this.NewPassword,
-  required this.ConfirmNewPassword
-  }
-  );
-  Map<String, dynamic> toJson()=>{
-    'newPasword':NewPassword,
-    'confirmNewPasword':ConfirmNewPassword,
+  final String email;
+  final String newPassword;
+  final String confirmNewPassword;
 
-  };
+  NewPasswordData({
+    required this.email,
+    required this.newPassword,
+    required this.confirmNewPassword,
+  });
 
-
+  Map<String, dynamic> toJson() => {
+        'email': email,
+        'newPassword': newPassword,
+        'confirmNewPassword': confirmNewPassword,
+      };
 }

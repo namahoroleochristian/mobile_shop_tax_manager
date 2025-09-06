@@ -12,6 +12,7 @@ import 'package:educat/components/authentication/signUp.dart';
 import 'package:educat/components/pages/Taxes.dart';
 import 'package:educat/components/providers/LoginProvider.dart';
 import 'package:educat/components/providers/SignUpProvider.dart';
+import 'package:educat/components/providers/resetpasword/NewPasswordProvider.dart';
 import 'package:educat/components/providers/resetpasword/VerifySecurityPin.dart';
 import 'package:educat/components/providers/resetpasword/sendVerificationCodeProvider.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,7 @@ void main() {
       ChangeNotifierProvider(create: (_) => LoginProvider()),
       ChangeNotifierProvider(create: (_) => SendVerificationCodeProvider()),
       ChangeNotifierProvider(create: (_) => VerifySecurityPinProvider()),
+      ChangeNotifierProvider(create: (_) => NewPasswordProvider()),
     ],
     child: MyApp(),
   ));
@@ -39,7 +41,7 @@ class MyApp extends StatelessWidget {
         '/signUp': (context) => Signup(),
         '/forgotPassword': (context) => Forgotpassword(),
         '/forgotPassword/nextStep': (context) => securityPin(),
-        '/forgotPassword/final': (context) => Newpassword(),
+        '/forgotPassword/final': (context) => newPassword(),
         '/homepage': (context) => Homepage(),
         '/taxes': (context) => Taxes(),
         '/inventory': (context) => Inventory(),
