@@ -4,6 +4,7 @@ import 'package:educat/components/pages/HomePage.dart';
 import 'package:educat/components/pages/ActionPromptStarter.dart';
 import 'package:educat/components/pages/Inventory.dart';
 import 'package:educat/components/pages/InventoryItemRegistration.dart';
+import 'package:educat/components/pages/SellItem.dart';
 import 'package:educat/components/pages/Settings.dart';
 import 'package:educat/components/pages/Starter.dart';
 import 'package:educat/components/authentication/Login.dart';
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
         '/inventory': (context) => Inventory(),
         '/ItemRegister': (context) => Inventoryitemregistration(),
         '/setting': (context) => Settings(),
+        '/sellItem':(context)=> sellItem()
       },
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),

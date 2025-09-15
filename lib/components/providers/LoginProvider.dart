@@ -30,9 +30,9 @@ class LoginProvider extends ChangeNotifier {
         _error = "all field sre required";
       }
       if (data.role == 'customer') {
-        url = "http://192.168.0.104:2000/tax/customer/login";
+        url = "http://192.168.0.101:2000/tax/customer/login";
       } else if (data.role == 'vendor') {
-        url = "http://192.168.0.104:2000/tax/payer/login";
+        url = "http://192.168.0.101:2000/tax/payer/login";
       } else {
         throw Exception("invalid role ");
       }
@@ -42,7 +42,7 @@ class LoginProvider extends ChangeNotifier {
       if (response.statusCode == 200) {
         final Map<String, dynamic> responseData = jsonDecode(response.body);
 
-        if (responseData['success'] = true) {
+        if (responseData['success'] == true) {
           final String? token = responseData['token'];
 
           if (token != null && token.isNotEmpty) {

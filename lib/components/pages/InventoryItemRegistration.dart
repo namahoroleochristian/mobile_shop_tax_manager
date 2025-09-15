@@ -77,29 +77,9 @@ class Inventoryitemregistration extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
+
                 SizedBox(
-                  width: 200,
-                  height: 60,
-                  child: TextButton(
-                    onPressed: () {},
-                    style: TextButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(20))),
-                    ).copyWith(
-                        side: WidgetStateProperty.all(BorderSide(
-                            color: const Color.fromRGBO(0, 208, 158, 1),
-                            width: 1.3))),
-                    child: Text(
-                      "Add to stock",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 24),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 200,
+                  width: MediaQuery.of(context).size.width/2.2,
                   height: 60,
                   child: TextButton(
                     onPressed: () {},
@@ -109,9 +89,32 @@ class Inventoryitemregistration extends StatelessWidget {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(20)))),
                     child: Text(
-                      "Sell",
+                      "add to stock",
                       style: TextStyle(
                           color: Colors.white,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 24),
+                    ),
+                  ),
+                ), SizedBox(
+                  width: MediaQuery.of(context).size.width/2.2,
+                  height: 60,
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed((context), '/sellItem');
+
+                    },
+                    style: TextButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20))),
+                    ).copyWith(
+                        side: WidgetStateProperty.all(BorderSide(
+                            color: const Color.fromRGBO(0, 208, 158, 1),
+                            width: 1.3))),
+                    child: Text(
+                      "sell",
+                      style: TextStyle(
+                          color: Colors.black,
                           fontWeight: FontWeight.w700,
                           fontSize: 24),
                     ),
